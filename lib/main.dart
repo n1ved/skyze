@@ -7,7 +7,6 @@ void main() {
 
 class SkyzeApp extends StatelessWidget {
   const SkyzeApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

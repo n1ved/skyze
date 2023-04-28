@@ -2,7 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:skyze/styles.dart';
-import 'package:skyze/util/weatherloader.dart';
+import 'package:skyze/util/location_worker.dart';
+import 'package:skyze/util/weather_worker.dart';
 import '../color.dart';
 import '../components/weatherinfocontainer.dart';
 
@@ -15,11 +16,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
-  void initState() {
-    WeatherLoader weatherLoader = WeatherLoader() ;
-    weatherLoader.getLocation() ;
-    super.initState();
-  }
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
