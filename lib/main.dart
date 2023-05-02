@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skyze/screens/home.dart';
+import 'package:skyze/screens/loading.dart';
 
 void main() {
   return runApp(const SkyzeApp());
@@ -13,7 +14,7 @@ class SkyzeApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: HomeScreen(),
+      home: LoadingScreen(),
     );
   }
 }

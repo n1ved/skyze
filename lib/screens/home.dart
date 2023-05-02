@@ -1,20 +1,40 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:skyze/styles.dart';
-import 'package:skyze/util/location_worker.dart';
-import 'package:skyze/util/weather_worker.dart';
-import '../color.dart';
 import '../components/weatherinfocontainer.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({required this.weatherData, super.key});
+
+  final dynamic weatherData;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String? locationName, country, description;
+  dynamic temperature, minTemp, maxTemp, pressure;
+  dynamic windSpeed, windDeg;
+  @override
+  void initState() {
+    super.initState();
+    updateScreen(widget.weatherData);
+  }
+
+  void updateScreen(dynamic weather) {
+    setState(() {
+      country = weather['sys']['country'];
+      locationName = weather['name'];
+      description = weather['weather'][0]['description'];
+      temperature = weather['main']['temp'].toStringAsFixed(0);
+      minTemp = weather['main']['temp_min'].toStringAsFixed(0);
+      maxTemp = weather['main']['temp_max'].toStringAsFixed(0);
+      pressure = weather['main']['pressure'];
+      windSpeed = weather['wind']['speed'];
+      windDeg = weather['wind']['deg'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,12 +50,25 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               weatherInfoContainer(child: navbarData()),
-              weatherInfoContainer(child: mainWeatherData()),
+              weatherInfoContainer(
+                  child: mainWeatherData(
+                location: locationName,
+                country: country,
+                temperature: temperature,
+                minTemp: minTemp,
+                maxTemp: maxTemp,
+                description: description,
+              )),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(child: weatherInfoContainer(child: windData())),
-                  Expanded(child: weatherInfoContainer(child: pressureData())),
+                  Expanded(
+                      child: weatherInfoContainer(
+                          child: windData(
+                              windDeg: windDeg, windSpeed: windSpeed))),
+                  Expanded(
+                      child: weatherInfoContainer(
+                          child: pressureData(pressure: pressure))),
                 ],
               ),
               weatherInfoContainer(child: pollutionData()),

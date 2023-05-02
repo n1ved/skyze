@@ -32,6 +32,7 @@ class LocationLoader {
     WeatherWorker weatherWorker = WeatherWorker(
         lat: locationData.latitude ?? -1, lon: locationData.longitude ?? -1);
     var data = await weatherWorker.getWeatherData();
+    print(data);
     return data;
   }
 }

@@ -12,7 +12,8 @@ Widget weatherInfoContainer({required Widget child}) {
   );
 }
 
-Widget mainWeatherData() {
+Widget mainWeatherData(
+    {location, country, temperature, minTemp, maxTemp, description}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
@@ -20,7 +21,7 @@ Widget mainWeatherData() {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "London,GB",
+            "$location , $country",
             style: TextStyle(
               color: textColor,
               fontSize: 32.0,
@@ -30,7 +31,7 @@ Widget mainWeatherData() {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "13°C",
+                "$temperature°C",
                 style: TextStyle(
                   color: textColor,
                   fontSize: 57.0,
@@ -42,14 +43,14 @@ Widget mainWeatherData() {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "4°C",
+                    "$minTemp°C",
                     style: TextStyle(
                       fontSize: 14.0,
                       color: textColor,
                     ),
                   ),
                   Text(
-                    "6°C",
+                    "$maxTemp°C",
                     style: TextStyle(
                       fontSize: 14.0,
                       color: textColor,
@@ -68,10 +69,10 @@ Widget mainWeatherData() {
           Icon(
             FontAwesomeIcons.cloud,
             color: textColor,
-            size: 96,
+            size: 84,
           ),
           Text(
-            'Scatterd Clouds',
+            '$description',
             style: TextStyle(
               fontSize: 14.0,
               color: textColor,
@@ -114,7 +115,8 @@ Widget navbarData() {
   );
 }
 
-Widget windData() {
+Widget windData({windSpeed, windDeg}) {
+  double windDegDouble = windDeg.toDouble();
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
@@ -125,13 +127,16 @@ Widget windData() {
           color: textColor,
         ),
       ),
-      Icon(
-        Icons.assistant_navigation,
-        size: 96,
-        color: textColor,
+      Transform.rotate(
+        angle: windDegDouble,
+        child: Icon(
+          Icons.assistant_navigation,
+          size: 96,
+          color: textColor,
+        ),
       ),
       Text(
-        '3.1m/s NW',
+        '$windSpeed m/s NW',
         style: TextStyle(
           color: textColor,
           fontSize: 14.0,
@@ -141,7 +146,7 @@ Widget windData() {
   );
 }
 
-Widget pressureData() {
+Widget pressureData({pressure}) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 25),
     child: Column(
@@ -159,7 +164,7 @@ Widget pressureData() {
           crossAxisAlignment: CrossAxisAlignment.baseline,
           children: [
             Text(
-              '1020',
+              '$pressure',
               style: TextStyle(
                 fontSize: 44.0,
                 fontWeight: FontWeight.bold,

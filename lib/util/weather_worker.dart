@@ -13,7 +13,6 @@ class WeatherWorker {
         {'lat': '$lat', 'lon': '$lon', 'appid': appId, 'units': 'metric'});
     http.Response response = await http.get(uri);
     String data = response.body;
-    // print(data);
     if (response.statusCode == 200) {
       return jsonDecode(data);
     }
