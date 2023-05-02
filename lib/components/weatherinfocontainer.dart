@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skyze/styles.dart';
 import '../color.dart';
+import 'dart:math' as math;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 Widget weatherInfoContainer({required Widget child}) {
@@ -125,7 +126,7 @@ Widget navbarData() {
 }
 
 Widget windData({windSpeed, windDeg}) {
-  double windDegDouble = windDeg.toDouble();
+  double windDegRadian = windDeg.toDouble() * (math.pi / 180);
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
@@ -137,15 +138,15 @@ Widget windData({windSpeed, windDeg}) {
         ),
       ),
       Transform.rotate(
-        angle: windDegDouble,
+        angle: windDegRadian,
         child: Icon(
-          Icons.assistant_navigation,
+          Icons.arrow_upward,
           size: 96,
           color: textColor,
         ),
       ),
       Text(
-        '$windSpeed m/s NW',
+        '$windSpeed m/s $windDeg°',
         style: TextStyle(
           color: textColor,
           fontSize: 14.0,
