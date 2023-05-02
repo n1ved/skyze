@@ -19,4 +19,3 @@ git clone https://github.com/n1ved/skyze
 &emsp; ``` String appID = "yourAPIkey" ``` \
 4. run ```flutter pub get``` to get dependencies \
 5. run ```flutter run``` to launch it on your emulator/device
-

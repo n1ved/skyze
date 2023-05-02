@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:skyze/util/switches.dart';
 import '../components/weatherinfocontainer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,9 +13,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String? locationName, country, description;
-  dynamic temperature, minTemp, maxTemp, pressure;
-  dynamic windSpeed, windDeg;
+  String? locationName, country, description, backgroundImageUrl;
+  dynamic temperature, minTemp, maxTemp, pressure, windSpeed, windDeg;
+  IconData? weatherIcon;
   @override
   void initState() {
     super.initState();
@@ -23,6 +24,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void updateScreen(dynamic weather) {
     setState(() {
+      CheckCondition checkCondition =
+          CheckCondition(condition: weather['weather'][0]['id']);
+      weatherIcon = checkCondition.getIcon();
+      backgroundImageUrl = checkCondition.getBackground();
       country = weather['sys']['country'];
       locationName = weather['name'];
       description = weather['weather'][0]['description'];
@@ -39,9 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/thunderstorm.jpg'),
+          image: AssetImage(backgroundImageUrl ?? 'assets/clear.jpg'),
           fit: BoxFit.cover,
         )),
         child: BackdropFilter(
@@ -58,6 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 minTemp: minTemp,
                 maxTemp: maxTemp,
                 description: description,
+                weatherIcon: weatherIcon ?? Icons.error,
               )),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

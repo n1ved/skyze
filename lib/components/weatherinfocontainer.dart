@@ -13,7 +13,14 @@ Widget weatherInfoContainer({required Widget child}) {
 }
 
 Widget mainWeatherData(
-    {location, country, temperature, minTemp, maxTemp, description}) {
+    {location,
+    country,
+    temperature,
+    minTemp,
+    maxTemp,
+    description,
+    required IconData weatherIcon}) {
+  String locationString = "$location , $country";
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
@@ -21,7 +28,9 @@ Widget mainWeatherData(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "$location , $country",
+            locationString.length > 10
+                ? "${locationString.substring(0, 10)}..."
+                : locationString,
             style: TextStyle(
               color: textColor,
               fontSize: 32.0,
@@ -67,7 +76,7 @@ Widget mainWeatherData(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            FontAwesomeIcons.cloud,
+            weatherIcon,
             color: textColor,
             size: 84,
           ),
