@@ -49,37 +49,34 @@ class _HomeScreenState extends State<HomeScreen> {
           image: AssetImage(backgroundImageUrl ?? 'assets/clear.jpg'),
           fit: BoxFit.cover,
         )),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaY: 10, sigmaX: 10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              weatherInfoContainer(child: navbarData()),
-              weatherInfoContainer(
-                  child: mainWeatherData(
-                location: locationName,
-                country: country,
-                temperature: temperature,
-                minTemp: minTemp,
-                maxTemp: maxTemp,
-                description: description,
-                weatherIcon: weatherIcon ?? Icons.error,
-              )),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                      child: weatherInfoContainer(
-                          child: windData(
-                              windDeg: windDeg, windSpeed: windSpeed))),
-                  Expanded(
-                      child: weatherInfoContainer(
-                          child: pressureData(pressure: pressure))),
-                ],
-              ),
-              weatherInfoContainer(child: pollutionData()),
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            weatherInfoContainer(child: navbarData()),
+            weatherInfoContainer(
+                child: mainWeatherData(
+              location: locationName,
+              country: country,
+              temperature: temperature,
+              minTemp: minTemp,
+              maxTemp: maxTemp,
+              description: description,
+              weatherIcon: weatherIcon ?? Icons.error,
+            )),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                    child: weatherInfoContainer(
+                        child:
+                            windData(windDeg: windDeg, windSpeed: windSpeed))),
+                Expanded(
+                    child: weatherInfoContainer(
+                        child: pressureData(pressure: pressure))),
+              ],
+            ),
+            weatherInfoContainer(child: pollutionData()),
+          ],
         ),
       ),
     );
