@@ -196,7 +196,7 @@ Widget pressureData({pressure}) {
   );
 }
 
-Widget pollutionData() {
+Widget pollutionData({airQuality, co, no, no2, o3}) {
   return Row(
     children: [
       Expanded(
@@ -211,7 +211,7 @@ Widget pollutionData() {
               ),
             ),
             Text(
-              'Good',
+              '$airQuality',
               style: TextStyle(
                 fontSize: 57,
                 fontWeight: FontWeight.bold,
@@ -226,10 +226,10 @@ Widget pollutionData() {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('CO   : 201.94 μg/m3', style: pollutionTextStyle),
-            Text('NO   : 0.02 μg/m3', style: pollutionTextStyle),
-            Text('NO2 : 0.77 μg/m3', style: pollutionTextStyle),
-            Text('O3    : 68.66 μg/m3', style: pollutionTextStyle),
+            Text('CO   : $co μg/m3', style: pollutionTextStyle),
+            Text('NO   : $no μg/m3', style: pollutionTextStyle),
+            Text('NO2 : $no2 μg/m3', style: pollutionTextStyle),
+            Text('O3    : $o3 μg/m3', style: pollutionTextStyle),
           ],
         ),
       )

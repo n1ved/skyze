@@ -13,8 +13,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String? locationName, country, description, backgroundImageUrl;
-  dynamic temperature, minTemp, maxTemp, pressure, windSpeed, windDeg;
+  String? locationName, country, description, backgroundImageUrl, airQuality;
+  dynamic temperature,
+      minTemp,
+      maxTemp,
+      pressure,
+      windSpeed,
+      windDeg,
+      co,
+      no,
+      no2,
+      o3,
+      airQIndex;
   IconData? weatherIcon;
   @override
   void initState() {
@@ -37,6 +47,31 @@ class _HomeScreenState extends State<HomeScreen> {
       pressure = weather['main']['pressure'];
       windSpeed = weather['wind']['speed'];
       windDeg = weather['wind']['deg'];
+      co = weather['list'][0]['components']['co'];
+      no = weather['list'][0]['components']['no'];
+      no2 = weather['list'][0]['components']['no2'];
+      o3 = weather['list'][0]['components']['o3'];
+      airQIndex = weather['list'][0]['main']['aqi'];
+      switch (airQIndex) {
+        case 1:
+          airQuality = "Good";
+          break;
+        case 2:
+          airQuality = "Fair";
+          break;
+        case 3:
+          airQuality = "Moderate";
+          break;
+        case 4:
+          airQuality = "Poor";
+          break;
+        case 5:
+          airQuality = "Very Poor";
+          break;
+        default:
+          airQuality = "Error";
+          break;
+      }
     });
   }
 
@@ -75,7 +110,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: pressureData(pressure: pressure))),
               ],
             ),
-            weatherInfoContainer(child: pollutionData()),
+            weatherInfoContainer(
+                child: pollutionData(
+              co: co,
+              no: no,
+              no2: no2,
+              o3: o3,
+              airQuality: airQuality,
+            )),
           ],
         ),
       ),
