@@ -25,7 +25,7 @@ class CheckCondition {
       case 7:
         return FontAwesomeIcons.smog;
       case 8:
-        return FontAwesomeIcons.sun;
+        return FontAwesomeIcons.cloudSun;
       default:
         return Icons.error;
     }
