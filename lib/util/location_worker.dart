@@ -1,5 +1,4 @@
 import 'package:location/location.dart';
-import 'package:skyze/util/weather_worker.dart';
 
 class LocationLoader {
   Future getLocation() async {
@@ -28,11 +27,6 @@ class LocationLoader {
       accuracy: LocationAccuracy.low,
     );
     locationData = await location.getLocation();
-
-    WeatherWorker weatherWorker = WeatherWorker(
-        lat: locationData.latitude ?? -1, lon: locationData.longitude ?? -1);
-    var data = await weatherWorker.getWeatherData();
-    print(data);
-    return data;
+    return locationData;
   }
 }

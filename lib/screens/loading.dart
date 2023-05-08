@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:skyze/screens/home.dart';
 import 'package:skyze/util/location_worker.dart';
+import 'package:skyze/util/polution_worker.dart';
+import 'package:skyze/util/weather_worker.dart';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({Key? key}) : super(key: key);
@@ -19,8 +21,20 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   void getData() async {
     LocationLoader locationLoader = LocationLoader();
-    var weatherData = await locationLoader.getLocation();
-    moveToHome(weatherData);
+    var locationData = await locationLoader.getLocation();
+
+    WeatherWorker weatherWorker = WeatherWorker(
+        lat: locationData.latitude ?? -1, lon: locationData.longitude ?? -1);
+    PollutionWorker pollutionWorker = PollutionWorker(
+        lat: locationData.latitude ?? -1, lon: locationData.longitude ?? -1);
+
+    var weatherdata = await weatherWorker.getWeatherData();
+    var pollutionData = await pollutionWorker.getPollutionData();
+
+    var dataMap = {};
+    dataMap.addAll(weatherdata);
+    dataMap.addAll(pollutionData);
+    moveToHome(dataMap);
   }
 
   void moveToHome(weatherData) {
