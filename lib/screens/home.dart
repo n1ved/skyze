@@ -1,7 +1,8 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:skyze/util/switches.dart';
 import '../components/weatherinfocontainer.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:skyze/styles.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({required this.weatherData, super.key});
@@ -87,7 +88,32 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            weatherInfoContainer(child: navbarData()),
+            Container(
+              margin:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 13.0),
+              padding: defaultPadding,
+              decoration: weatherBoxDecoration(),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(
+                    FontAwesomeIcons.arrowsRotate,
+                    color: Color(0xfff9d5ff),
+                  ),
+                  Text(
+                    "Skyze",
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Icon(
+                    FontAwesomeIcons.city,
+                    color: Color(0xfff9d5ff),
+                  ),
+                ],
+              ),
+            ),
             weatherInfoContainer(
                 child: mainWeatherData(
               location: locationName,
