@@ -88,14 +88,6 @@ Widget mainWeatherData(
               color: textColor,
             ),
           ),
-          Text(
-            'Light Breeze',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 14.0,
-              color: textColor,
-            ),
-          )
         ],
       )
     ],
