@@ -132,7 +132,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () {
                       showDialog(
                           context: context,
-                          builder: (BuildContext context) => AlertDialog(
+                          builder: (BuildContext dialogueContext) =>
+                              AlertDialog(
                                 title: const Text("Search City"),
                                 content: TextField(
                                   controller: inputController,
@@ -146,14 +147,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                 actions: [
                                   TextButton(
                                     onPressed: () {
-                                      Navigator.pop(context);
+                                      Navigator.pop(dialogueContext);
                                     },
                                     child: const Text("Cancel"),
                                   ),
                                   TextButton(
                                     onPressed: () async {
                                       GetData getData = GetData();
-                                      // Navigator.pop(context);
+                                      Navigator.pop(dialogueContext);
+                                      if (context.mounted) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                                content: Text("Loading....")));
+                                      }
                                       dynamic returnData =
                                           await getData.getAllDataByName(
                                               cityName: cityNameInput);
@@ -161,10 +167,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                         updateScreen(returnData);
                                         cityNameInput = '';
                                       } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(SnackBar(
-                                                content: Text(
-                                                    "Error Finding City ...")));
+                                        if (context.mounted) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(const SnackBar(
+                                                  content: Text(
+                                                      "Error Finding City")));
+                                        }
                                       }
                                     },
                                     child: const Text("Search"),
