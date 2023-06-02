@@ -103,9 +103,9 @@ Widget mainWeatherData(
 }
 
 Widget navbarData() {
-  return Row(
+  return const Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: const [
+    children: [
       Icon(
         FontAwesomeIcons.arrowsRotate,
         color: Color(0xfff9d5ff),

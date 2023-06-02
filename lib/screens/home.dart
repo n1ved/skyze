@@ -16,6 +16,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late TextEditingController inputController;
+  late String cityNameInput;
   String? locationName, country, description, backgroundImageUrl, airQuality;
   dynamic temperature,
       minTemp,
@@ -32,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    inputController = TextEditingController();
     updateScreen(widget.weatherData);
   }
 
@@ -79,6 +82,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
+  void dispose() {
+    inputController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -119,9 +128,54 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.white,
                     ),
                   ),
-                  const Icon(
-                    FontAwesomeIcons.city,
-                    color: Color(0xfff9d5ff),
+                  GestureDetector(
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                                title: const Text("Search City"),
+                                content: TextField(
+                                  controller: inputController,
+                                  onChanged: (value) {
+                                    cityNameInput = value;
+                                  },
+                                  decoration: const InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      labelText: "City Name"),
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text("Cancel"),
+                                  ),
+                                  TextButton(
+                                    onPressed: () async {
+                                      GetData getData = GetData();
+                                      // Navigator.pop(context);
+                                      dynamic returnData =
+                                          await getData.getAllDataByName(
+                                              cityName: cityNameInput);
+                                      if (returnData != 'error') {
+                                        updateScreen(returnData);
+                                        cityNameInput = '';
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                                content: Text(
+                                                    "Error Finding City ...")));
+                                      }
+                                    },
+                                    child: const Text("Search"),
+                                  ),
+                                ],
+                              ));
+                    },
+                    child: const Icon(
+                      FontAwesomeIcons.city,
+                      color: Color(0xfff9d5ff),
+                    ),
                   ),
                 ],
               ),

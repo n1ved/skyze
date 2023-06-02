@@ -17,4 +17,16 @@ class WeatherWorker {
       return jsonDecode(data);
     }
   }
+
+  Future getWeatherDataByName({required String cityName}) async {
+    Uri uri = Uri.https('api.openweathermap.org', '/data/2.5/weather',
+        {'q': cityName, 'appid': appId, 'units': 'metric'});
+    http.Response response = await http.get(uri);
+    String data = response.body;
+    if (response.statusCode == 200) {
+      return jsonDecode(data);
+    } else {
+      return "error";
+    }
+  }
 }
