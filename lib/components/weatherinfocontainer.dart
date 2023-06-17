@@ -79,12 +79,13 @@ Widget mainWeatherData(
           Icon(
             weatherIcon,
             color: textColor,
-            size: 84,
+            size: 80,
           ),
+          const SizedBox(height: 10),
           Text(
             '$description',
             style: TextStyle(
-              fontSize: 14.0,
+              fontSize: 18.0,
               color: textColor,
             ),
           ),

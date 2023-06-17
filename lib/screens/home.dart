@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:skyze/color.dart';
 import 'package:skyze/components/snackbar.dart';
 import 'package:skyze/util/switches.dart';
 import '../components/weatherinfocontainer.dart';
