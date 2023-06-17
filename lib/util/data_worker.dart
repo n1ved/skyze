@@ -26,9 +26,8 @@ class GetData {
     if (weatherdata == 'error') {
       return "error";
     }
-
-    double lat = weatherdata['coord']['lat'];
-    double lon = weatherdata['coord']['lon'];
+    double lat = weatherdata['coord']['lat'].toDouble();
+    double lon = weatherdata['coord']['lon'].toDouble();
 
     PollutionWorker pollutionWorker = PollutionWorker(lat: lat, lon: lon);
 
