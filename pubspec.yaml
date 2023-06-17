@@ -38,6 +38,7 @@ dependencies:
   font_awesome_flutter: ^10.4.0
   location: ^4.4.0
   http: ^0.13.5
+  loading_animation_widget: ^1.2.0+4
 
 dev_dependencies:
   flutter_test:

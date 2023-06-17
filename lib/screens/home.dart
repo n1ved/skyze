@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:skyze/color.dart';
+import 'package:skyze/components/snackbar.dart';
 import 'package:skyze/util/switches.dart';
 import '../components/weatherinfocontainer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -109,6 +111,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   GestureDetector(
                     onTap: () async {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          roundedSnackBar(
+                              contentString: "Refreshing", loading: true));
                       LocationLoader locationLoader = LocationLoader();
                       var locationData = await locationLoader.getLocation();
                       GetData getData = GetData();
@@ -157,8 +162,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Navigator.pop(dialogueContext);
                                       if (context.mounted) {
                                         ScaffoldMessenger.of(context)
-                                            .showSnackBar(const SnackBar(
-                                                content: Text("Loading....")));
+                                            .showSnackBar(roundedSnackBar(
+                                                contentString: "Loading",
+                                                loading: true));
                                       }
                                       dynamic returnData =
                                           await getData.getAllDataByName(
@@ -169,9 +175,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                       } else {
                                         if (context.mounted) {
                                           ScaffoldMessenger.of(context)
-                                              .showSnackBar(const SnackBar(
-                                                  content: Text(
-                                                      "Error Finding City")));
+                                              .showSnackBar(
+                                            roundedSnackBar(
+                                              contentString:
+                                                  "Unable to Find the city",
+                                              loading: false,
+                                            ),
+                                          );
                                         }
                                       }
                                     },
