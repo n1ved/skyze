@@ -19,7 +19,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late TextEditingController inputController;
   late String cityNameInput;
-  String? locationName, country, description, backgroundImageUrl, airQuality;
+  String? locationName,
+      country,
+      description,
+      backgroundImageUrl,
+      airQuality,
+      imageAttribute;
   dynamic temperature,
       minTemp,
       maxTemp,
@@ -45,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
           CheckCondition(condition: weather['weather'][0]['id']);
       weatherIcon = checkCondition.getIcon();
       backgroundImageUrl = checkCondition.getBackground();
+      imageAttribute = checkCondition.getAttribute();
       country = weather['sys']['country'];
       locationName = weather['name'];
       description = weather['weather'][0]['description'];
@@ -228,6 +234,12 @@ class _HomeScreenState extends State<HomeScreen> {
               o3: o3,
               airQuality: airQuality,
             )),
+            Text(
+              "$imageAttribute",
+              style: const TextStyle(
+                color: Colors.white,
+              ),
+            ),
           ],
         ),
       ),

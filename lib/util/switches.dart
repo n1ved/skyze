@@ -36,7 +36,7 @@ class CheckCondition {
       case 2:
         return 'assets/thunderstorm.jpg';
       case 3:
-        return 'assets/drizzle.jpg';
+        return 'assets/rain.jpg';
       case 5:
         return 'assets/rain.jpg';
       case 6:
@@ -47,6 +47,25 @@ class CheckCondition {
         return 'assets/clear.jpg';
       default:
         return 'assets/clouds.jpg';
+    }
+  }
+
+  String getAttribute() {
+    switch (code) {
+      case 2:
+        return 'Image by Gordon Johnson from Pixabay';
+      case 3:
+        return 'Image by Amy Art-Dreams from Pixabay';
+      case 5:
+        return 'Image by Amy Art-Dreams from Pixabay';
+      case 6:
+        return 'Image by Ieva from Pixabay';
+      case 7:
+        return 'Image by asrulaqroni on Freepik';
+      case 8:
+        return 'Image by coolvector on Freepik';
+      default:
+        return 'Image by asrulaqroni on Freepik';
     }
   }
 }
