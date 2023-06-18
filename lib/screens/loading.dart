@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:skyze/color.dart';
 import 'package:skyze/screens/home.dart';
 import 'package:skyze/util/location_worker.dart';
 import 'package:skyze/util/data_worker.dart';
@@ -31,6 +32,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     });
     GetData getData = GetData();
     dynamic returnData = await getData.getAllData(locationData);
+    setColor();
     moveToHome(returnData);
   }
 
@@ -40,10 +42,15 @@ class _LoadingScreenState extends State<LoadingScreen> {
     }));
   }
 
+  void setColor() {
+    backgroundColor = Theme.of(context).colorScheme.background;
+    textColor = Theme.of(context).colorScheme.primary;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).colorScheme.primary,
+      color: Theme.of(context).colorScheme.background,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +58,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
             Text(
               'Skyze',
               style: TextStyle(
-                color: Theme.of(context).colorScheme.onPrimary,
+                color: Theme.of(context).colorScheme.primary,
                 decoration: TextDecoration.none,
                 fontSize: 72,
               ),
@@ -63,13 +70,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
               children: [
                 LoadingAnimationWidget.halfTriangleDot(
                   size: 20,
-                  color: Theme.of(context).colorScheme.onPrimary,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
                 const SizedBox(width: 10),
                 Text(
                   loadingText,
                   style: TextStyle(
-                    color: Theme.of(context).colorScheme.onPrimary,
+                    color: Theme.of(context).colorScheme.primary,
                     decoration: TextDecoration.none,
                     fontWeight: FontWeight.w100,
                     fontSize: 15,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skyze/color.dart';
 import 'package:skyze/components/snackbar.dart';
 import 'package:skyze/util/switches.dart';
 import '../components/weatherinfocontainer.dart';
@@ -127,16 +128,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           await getData.getAllData(locationData);
                       updateScreen(returnData);
                     },
-                    child: const Icon(
+                    child: Icon(
                       FontAwesomeIcons.arrowsRotate,
-                      color: Color(0xfff9d5ff),
+                      color: textColor,
                     ),
                   ),
-                  const Text(
+                  Text(
                     "Skyze",
                     style: TextStyle(
                       fontSize: 25.0,
-                      color: Colors.white,
+                      color: textColor,
                     ),
                   ),
                   GestureDetector(
@@ -196,9 +197,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ],
                               ));
                     },
-                    child: const Icon(
+                    child: Icon(
                       FontAwesomeIcons.city,
-                      color: Color(0xfff9d5ff),
+                      color: textColor,
                     ),
                   ),
                 ],
