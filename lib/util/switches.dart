@@ -84,7 +84,7 @@ class CheckCondition {
       case 8:
         return const Color.fromARGB(255, 5, 104, 150);
       default:
-        return const Color.fromARGB(255, 5, 104, 150);
+        return const Color.fromARGB(255, 33, 62, 93);
     }
   }
 
@@ -103,7 +103,7 @@ class CheckCondition {
       case 8:
         return const Color.fromARGB(255, 182, 229, 223);
       default:
-        return const Color.fromARGB(255, 182, 229, 223);
+        return const Color.fromARGB(255, 166, 189, 205);
     }
   }
 }
