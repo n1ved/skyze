@@ -32,7 +32,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
     });
     GetData getData = GetData();
     dynamic returnData = await getData.getAllData(locationData);
-    setColor();
     moveToHome(returnData);
   }
 
@@ -42,23 +41,18 @@ class _LoadingScreenState extends State<LoadingScreen> {
     }));
   }
 
-  void setColor() {
-    backgroundColor = Theme.of(context).colorScheme.background;
-    textColor = Theme.of(context).colorScheme.primary;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).colorScheme.background,
+      color: const Color.fromARGB(255, 0, 203, 248),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Skyze',
               style: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
+                color: Color.fromARGB(255, 30, 30, 30),
                 decoration: TextDecoration.none,
                 fontSize: 72,
               ),
@@ -70,13 +64,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
               children: [
                 LoadingAnimationWidget.halfTriangleDot(
                   size: 20,
-                  color: Theme.of(context).colorScheme.primary,
+                  color: const Color.fromARGB(255, 30, 30, 30),
                 ),
                 const SizedBox(width: 10),
                 Text(
                   loadingText,
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.primary,
+                  style: const TextStyle(
+                    color: Color.fromARGB(255, 30, 30, 30),
                     decoration: TextDecoration.none,
                     fontWeight: FontWeight.w100,
                     fontSize: 15,
