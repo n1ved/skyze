@@ -51,6 +51,8 @@ class _HomeScreenState extends State<HomeScreen> {
           CheckCondition(condition: weather['weather'][0]['id']);
       weatherIcon = checkCondition.getIcon();
       backgroundImageUrl = checkCondition.getBackground();
+      backgroundColor = checkCondition.getBackgroundColor();
+      textColor = checkCondition.getTextColor();
       imageAttribute = checkCondition.getAttribute();
       country = weather['sys']['country'];
       locationName = weather['name'];
@@ -237,8 +239,8 @@ class _HomeScreenState extends State<HomeScreen> {
             )),
             Text(
               "$imageAttribute",
-              style: const TextStyle(
-                color: Colors.white,
+              style: TextStyle(
+                color: textColor,
               ),
             ),
           ],

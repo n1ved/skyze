@@ -219,10 +219,14 @@ Widget pollutionData({airQuality, co, no, no2, o3}) {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('CO   : $co μg/m3', style: pollutionTextStyle),
-            Text('NO   : $no μg/m3', style: pollutionTextStyle),
-            Text('NO2 : $no2 μg/m3', style: pollutionTextStyle),
-            Text('O3    : $o3 μg/m3', style: pollutionTextStyle),
+            Text('CO   : $co μg/m3',
+                style: pollutionTextStyle.copyWith(color: textColor)),
+            Text('NO   : $no μg/m3',
+                style: pollutionTextStyle.copyWith(color: textColor)),
+            Text('NO2 : $no2 μg/m3',
+                style: pollutionTextStyle.copyWith(color: textColor)),
+            Text('O3    : $o3 μg/m3',
+                style: pollutionTextStyle.copyWith(color: textColor)),
           ],
         ),
       )

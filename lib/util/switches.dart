@@ -68,4 +68,42 @@ class CheckCondition {
         return 'Image by asrulaqroni on Freepik';
     }
   }
+
+  Color getBackgroundColor() {
+    switch (code) {
+      case 2:
+        return const Color.fromARGB(255, 21, 103, 157);
+      case 3:
+        return const Color.fromARGB(255, 12, 42, 78);
+      case 5:
+        return const Color.fromARGB(255, 12, 42, 78);
+      case 6:
+        return const Color.fromARGB(255, 45, 85, 113);
+      case 7:
+        return const Color.fromARGB(255, 33, 62, 93);
+      case 8:
+        return const Color.fromARGB(255, 5, 104, 150);
+      default:
+        return const Color.fromARGB(255, 5, 104, 150);
+    }
+  }
+
+  Color getTextColor() {
+    switch (code) {
+      case 2:
+        return const Color.fromARGB(255, 7, 242, 250);
+      case 3:
+        return const Color.fromARGB(255, 200, 245, 194);
+      case 5:
+        return const Color.fromARGB(255, 200, 245, 194);
+      case 6:
+        return const Color.fromARGB(255, 173, 201, 211);
+      case 7:
+        return const Color.fromARGB(255, 166, 189, 205);
+      case 8:
+        return const Color.fromARGB(255, 182, 229, 223);
+      default:
+        return const Color.fromARGB(255, 182, 229, 223);
+    }
+  }
 }
