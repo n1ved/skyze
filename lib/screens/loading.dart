@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:skyze/color.dart';
 import 'package:skyze/screens/home.dart';
 import 'package:skyze/util/location_worker.dart';
 import 'package:skyze/util/data_worker.dart';
