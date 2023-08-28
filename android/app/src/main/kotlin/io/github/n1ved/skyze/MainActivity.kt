@@ -1,4 +1,4 @@
-package io.github.n1ved.skyze
+package me.n1ved.skyze
 
 import io.flutter.embedding.android.FlutterActivity
 
