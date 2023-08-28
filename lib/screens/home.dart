@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:skyze/color.dart';
 import 'package:skyze/components/snackbar.dart';
 import 'package:skyze/util/process_data.dart';
-import 'package:skyze/util/switches.dart';
 import '../components/weatherinfocontainer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:skyze/styles.dart';
