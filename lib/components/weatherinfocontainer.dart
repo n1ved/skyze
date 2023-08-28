@@ -190,46 +190,38 @@ Widget pressureData({pressure}) {
 }
 
 Widget pollutionData({airQuality, co, no, no2, o3}) {
-  return Row(
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.stretch,
     children: [
-      Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Air Quality',
-              style: TextStyle(
-                fontSize: 11.0,
-                color: textColor,
-              ),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Air Quality',
+            style: TextStyle(
+              fontSize: 11.0,
+              color: textColor,
             ),
-            Text(
-              '$airQuality',
-              style: TextStyle(
-                fontSize: 57,
-                fontWeight: FontWeight.bold,
-                color: textColor,
-              ),
+          ),
+          Text(
+            '$airQuality',
+            style: TextStyle(
+              fontSize: 57,
+              fontWeight: FontWeight.bold,
+              color: textColor,
             ),
-          ],
-        ),
+          ),
+          Text('CO   : $co μg/m3',
+              style: pollutionTextStyle.copyWith(color: textColor)),
+          Text('NO   : $no μg/m3',
+              style: pollutionTextStyle.copyWith(color: textColor)),
+          Text('NO2 : $no2 μg/m3',
+              style: pollutionTextStyle.copyWith(color: textColor)),
+          Text('O3    : $o3 μg/m3',
+              style: pollutionTextStyle.copyWith(color: textColor)),
+        ],
       ),
-      Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('CO   : $co μg/m3',
-                style: pollutionTextStyle.copyWith(color: textColor)),
-            Text('NO   : $no μg/m3',
-                style: pollutionTextStyle.copyWith(color: textColor)),
-            Text('NO2 : $no2 μg/m3',
-                style: pollutionTextStyle.copyWith(color: textColor)),
-            Text('O3    : $o3 μg/m3',
-                style: pollutionTextStyle.copyWith(color: textColor)),
-          ],
-        ),
-      )
     ],
   );
 }
