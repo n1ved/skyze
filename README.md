@@ -8,7 +8,8 @@ Skyze is beautiful weather app made on flutter with openweathermap API
 
 <!-- ### INDEX
 [1 . Setting up environment ]() -->
-
+### Screenshots
+| ![Loading](screenshots/1.png) | ![Main Screen 1](screenshots/2.png)
 ### Setting up environment 
 
 1 . Clone the repo 
