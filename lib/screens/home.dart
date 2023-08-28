@@ -183,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
               airQuality: processData.airQuality,
             )),
             Text(
-              "$processData.imageAttribute",
+              "${processData.imageAttribute}",
               style: TextStyle(
                 color: textColor,
               ),
